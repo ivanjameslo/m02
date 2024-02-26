@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model employees {
+  id Int @id @default(autoincrement())
+  emp_num Int @unique
+  firstName String
+  middleName String
+  lastName String
+  address_line String
+  brgy String
+  province String
+  country String
+  zip_code Int
+  assignment assign_designation[]
+}
+
+model assign_designation {
+  id Int @id @default(autoincrement())
+  employees employees @relation(fields: [emp_num], references: [emp_num])
+  emp_num Int 
+  designation designation @relation(fields: [designation_id], references: [id])
+  designation_id Int
+  employee_type employee_type
+  status assignment_status
+}
+
+model departments {
+  id Int @id @default(autoincrement())
+  dept_name String
+  status status 
+  designation designation[]
+}
+
+model designation {
+  id Int @id @default(autoincrement())
+  designation_name String
+  departments departments @relation(fields: [department_id], references: [id])
+  department_id Int
+  status status
+  assign_designation assign_designation[]
+}
+
+enum status {
+  Active
+  Inactive
+}
+
+enum employee_type {
+  Regular
+  Irregular
+  PartTime
+  Intern
+  Remote
+}
+
+enum assignment_status {
+  Active
+  Resigned 
+  AWOL
+}
