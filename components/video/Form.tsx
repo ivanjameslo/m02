@@ -1,0 +1,30 @@
+"use client"
+
+import {useRef, ReactNode} from 'react'
+import { act } from 'react-dom/test-utils';
+
+interface formProps{
+    children: ReactNode;
+    action: (formData: FormData) => Promise<void | boolean>;
+    className?: string;
+    onSubmit?: () => void;
+}
+
+const Form = ({children, action, className, onSubmit}: formProps) => {
+  
+    const ref = useRef<HTMLFormElement>(null);
+
+    return (
+        <form
+        className = {className}
+        onSubmit = {onSubmit}
+        ref = {ref}
+        action = {async (formData) => {
+            await action(formData)
+            ref.current?.reset()
+        }}
+        > {children} </form>
+    )
+}
+
+export default Form
