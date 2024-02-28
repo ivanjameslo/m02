@@ -2,15 +2,15 @@ import Navbar from './Navbar'
 
 const startingPage = () => {
   return (
-    <div>
+    <div className="text-center">
       <Navbar />
-      <div>
+      <div className="m-4">
         <h1>Employee Management System</h1>
       </div>
-      <div>
+      <div className="m-4">
         <h2>SAI Group</h2>
       </div>
-      <div>
+      <div className="m-4">
         <p>Haw  |  Lo  |  Mejorada</p>
       </div>
     </div>
