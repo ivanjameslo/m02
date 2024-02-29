@@ -1,26 +1,30 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import Form from "@/components/video/Form";
-import Input from "@/components/video/Input";
-import { create } from '@/app/actions/todoActions';
-import Button from '@/components/video/Button';
+// import { useRouter } from 'next/router';
+import Form from "@/components/ui/Form";
+import Input from "@/components/ui/Input";
+import { createEmployee } from '@/app/actions/todoActions';
+import Button from '@/components/ui/Button';
 
 const NewEmployee = () => {
-  
-  <Form action={create} className="">
-      <Input name="emp_num" type="Int" placeholder="Employee Number" />
-      <Input name="firstName" type="text" placeholder="First Name" />
-      <Input name="middleName" type="text" placeholder="Middle Name" />
-      <Input name="lastName" type="text" placeholder="Last Name" />
-      <Input name="address_line" type="text" placeholder="Address Line" />
-      <Input name="brgy" type="text" placeholder="Barangay" />
-      <Input name="province" type="text" placeholder="Province" />
-      <Input name="country" type="text" placeholder="Country" />
-      <Input name="zip_code" type="Int" placeholder="Zip Code" />
-      <Button type="submit" text="Add"/>
-  </Form>
+  return (
+    <Form action={createEmployee} className="">
+        <Input name="emp_num" type="Int" placeholder="Employee Number" />
+        <Input name="firstName" type="text" placeholder="First Name" />
+        <Input name="middleName" type="text" placeholder="Middle Name" />
+        <Input name="lastName" type="text" placeholder="Last Name" />
+        <Input name="address_line" type="text" placeholder="Address Line" />
+        <Input name="brgy" type="text" placeholder="Barangay" />
+        <Input name="province" type="text" placeholder="Province" />
+        <Input name="country" type="text" placeholder="Country" />
+        <Input name="zip_code" type="Int" placeholder="Zip Code" />
+        <Button type="submit" text="Add"/>
+    </Form>
+  );
+};
+
+export default NewEmployee;
 
 
   //   const router = useRouter();
@@ -159,6 +163,3 @@ const NewEmployee = () => {
   //     </form>
   //   </div>
   // );
-};
-
-export default NewEmployee

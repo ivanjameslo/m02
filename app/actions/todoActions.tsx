@@ -5,8 +5,18 @@ import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
-export async function create(formData: FormData){
-    const input = formData.get('input') as string
+// CREATE FUNCTIONS
+
+export async function createEmployee(formData: FormData){
+    const emp_num = Number(formData.get('emp_num'))
+    const firstName = formData.get('firstName') as string
+    const middleName = formData.get('middleName') as string
+    const lastName = formData.get('lastName') as string
+    const address_line = formData.get('address_line') as string
+    const brgy = formData.get('brgy') as string
+    const province = formData.get('province') as string
+    const country = formData.get('country') as string
+    const zip_code = Number(formData.get('zip_code'))
 
     await prisma.employees.create({
         data: {
@@ -22,13 +32,19 @@ export async function create(formData: FormData){
         }
     })
 
+    revalidatePath('/')
+}
+
+export async function createDepartment(formData: FormData){
+    const dept_name = formData.get('dept_name') as string
+    const status = formData.get('status') as 'Active' | 'Inactive'
+    
     await prisma.departments.create({
         data: {
             dept_name: formData.get('dept_name') as string,
             status: formData.get('status') as 'Active' | 'Inactive',
         }
     })
+
     revalidatePath('/')
-
-
 }
