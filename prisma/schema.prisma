@@ -14,7 +14,7 @@ datasource db {
 }
 
 model employees {
-  id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement()) @map("_id")
   emp_num Int @unique
   firstName String
   middleName String
