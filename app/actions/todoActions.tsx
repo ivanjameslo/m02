@@ -48,3 +48,26 @@ export async function createDepartment(formData: FormData){
 
     revalidatePath('/')
 }
+
+// GET FUNCTIONS
+
+// export async function getEmployeeData(){
+
+//     const employeeData = await prisma.employees.findMany({
+//         select:{
+//             emp_num: true,
+//             firstName: true,
+//             middleName: true,
+//             lastName: true,
+//             address_line: true,
+//             brgy: true,
+//             province: true,
+//             country: true,
+//             zip_code: true
+//         },
+//         orderBy: {
+//             emp_num: 'asc'
+//         }
+//     })
+//     revalidatePath('/')
+// }

@@ -6,8 +6,8 @@ import Form from "@/components/ui/Form";
 import Input from "@/components/ui/Input";
 import { createEmployee } from '@/app/actions/todoActions';
 import Button from '@/components/ui/Button';
-// import NewEmployeeTable from '../shared_results/newEmployeeTable';
 import { prisma } from '@/utils/prisma';
+import NewEmployeeTable from '../shared_results/newEmployeeTable';
 
 
 const NewEmployee = async () => {
@@ -27,6 +27,9 @@ const NewEmployee = async () => {
             <Button type="submit" text="Add"/>
         </Form>
      </div>
+      <div>
+        <NewEmployeeTable />
+      </div>
     </div>
   );
 };
