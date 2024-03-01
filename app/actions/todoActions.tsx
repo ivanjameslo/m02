@@ -49,25 +49,32 @@ export async function createDepartment(formData: FormData){
     revalidatePath('/')
 }
 
-// GET FUNCTIONS
+export async function updateEmployee(formData: FormData){
+    const emp_num = Number(formData.get('new_emp_num'))
+    const firstName = formData.get('new_firstName') as string
+    const middleName = formData.get('new_middleName') as string
+    const lastName = formData.get('new_lastName') as string
+    const address_line = formData.get('new_address_line') as string
+    const brgy = formData.get('new_brgy') as string
+    const province = formData.get('new_province') as string
+    const country = formData.get('new_country') as string
+    const zip_code = Number(formData.get('new_zip_code'))
 
-// export async function getEmployeeData(){
-
-//     const employeeData = await prisma.employees.findMany({
-//         select:{
-//             emp_num: true,
-//             firstName: true,
-//             middleName: true,
-//             lastName: true,
-//             address_line: true,
-//             brgy: true,
-//             province: true,
-//             country: true,
-//             zip_code: true
-//         },
-//         orderBy: {
-//             emp_num: 'asc'
-//         }
-//     })
-//     revalidatePath('/')
-// }
+    await prisma.employees.update({
+        where: {
+            id: Number(formData.get('id'))
+        },
+        data: {
+            emp_num: Number(formData.get('new_emp_num')),
+            firstName: formData.get('new_firstName') as string,
+            middleName: formData.get('new_middleName') as string,
+            lastName: formData.get('new_lastName') as string,
+            address_line: formData.get('new_address_line') as string,
+            brgy: formData.get('new_brgy') as string,
+            province: formData.get('new_province') as string,
+            country: formData.get('new_country') as string,
+            zip_code: Number(formData.get('new_zip_code')),
+        }
+    })
+    revalidatePath('/')
+}

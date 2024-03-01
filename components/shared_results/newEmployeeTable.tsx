@@ -1,5 +1,6 @@
 // import { prisma } from "@/utils/prisma";
 import { PrismaClient } from '@prisma/client';
+import NewEmployeeUpdate from '../shared_update/NewEmployeeUpdate';
 
 const prisma = new PrismaClient();
 
@@ -44,8 +45,12 @@ const newEmployeeTable = async () => {
                         <p>{employees.country}</p>
                         <p>{employees.zip_code}</p>
                     </div>
+                    <div className="flex items-center gap-5">
+                        <NewEmployeeUpdate employees={employeeData} />
+                    </div>
                 </div>
             ))}
+
         </div>
     )
 }
