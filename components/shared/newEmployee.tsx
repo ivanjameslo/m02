@@ -10,7 +10,7 @@ import { prisma } from '@/utils/prisma';
 import NewEmployeeTable from '../shared_results/newEmployeeTable';
 
 
-const NewEmployee = async () => {
+const NewEmployee = () => {
   return (
     <div>
       <div>
@@ -28,7 +28,7 @@ const NewEmployee = async () => {
         </Form>
      </div>
       <div>
-        <NewEmployeeTable />
+        {/* <NewEmployeeTable /> */}
       </div>
     </div>
   );

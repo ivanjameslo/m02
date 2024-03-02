@@ -21,11 +21,12 @@ const newEmployeeUpdate = ( {employees}: {employees: any} ) => {
     <div className="flex gap-5 items-center">
         <Button 
         onclick={handleEdit}
-        text="Update"
+        text="Select"
         actionButton
         />
 
         {newEmployeeUpdate ? (
+          <div>
             <Form 
             action={updateEmployee} 
             onSubmit={handleSubmit}>
@@ -38,7 +39,7 @@ const newEmployeeUpdate = ( {employees}: {employees: any} ) => {
                 <Input name="province" value={employees.id} type="hidden" />
                 <Input name="country" value={employees.id} type="hidden" />
                 <Input name="zip_code" value={employees.id} type="hidden" />
-                <div className="flex justify-center">
+                <div className="flex justify-center flex-col">
                     <Input name="new_emp_num" type="Int" placeholder="New Employee Number"/>
                     <Input name="new_firstName" type="text" placeholder="New First Name" />
                     <Input name="new_middleName" type="text" placeholder="New Middle Name" />
@@ -51,6 +52,7 @@ const newEmployeeUpdate = ( {employees}: {employees: any} ) => {
                     <Button type="submit" text="Save"/>
                 </div>
             </Form>
+            </div>
             ) : (null
         )}
     </div>

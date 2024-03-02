@@ -6,11 +6,15 @@ import Form from "@/components/ui/Form";
 import { createEmployee } from "./actions/todoActions";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import NewEmployeeTable from "../components/shared_results/newEmployeeTable";
 
 export default function Home() {
   return (
     <main>
       <NewEmployee />
+      <NewEmployeeTable />
     </main>
   );
 }
+
+
