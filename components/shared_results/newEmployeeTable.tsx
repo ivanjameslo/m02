@@ -8,6 +8,7 @@ async function getEmployeeData(){
 
     const employeeData = await prisma.employees.findMany({
         select:{
+            id: true,
             emp_num: true,
             firstName: true,
             middleName: true,
@@ -19,7 +20,7 @@ async function getEmployeeData(){
             zip_code: true
         },
         orderBy: {
-            emp_num: 'asc'
+            id: 'asc'
         }
     })
   
@@ -33,6 +34,7 @@ const newEmployeeTable = async () => {
             {employeeData.map((employees, id) => (
                 <div key={id} className="flex flex-row gap-5 items-center justify-center w-full">
                     <div className="flex flex-col gap-2 items-center justify-center">
+                        <p>{employees.id}</p>
                         <p>{employees.emp_num}</p>
                         <p>{employees.firstName}</p>
                         <p>{employees.middleName}</p>
@@ -46,7 +48,7 @@ const newEmployeeTable = async () => {
                         <p>{employees.zip_code}</p>
                     </div>
                     <div className="flex items-center gap-5">
-                        <NewEmployeeUpdate employees={employeeData} />
+                        <NewEmployeeUpdate employees={employees} />
                     </div>
                 </div>
             ))}

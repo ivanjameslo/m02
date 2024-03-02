@@ -1,14 +1,45 @@
+import NavButton from '@/components/ui/NavButton';
+import Image from 'next/image';
+
 const Navbar = () => {
   return (
-    <div className="bg-blue-900 p-4 text-white">
+    <div className="bg-blue-900 p-5 text-white ">
         <div className="flex justify-between">
-            <h2>SAI</h2> 
+            <Image
+              src='/logo.png'
+              alt='logo'
+              width={150}
+              height={100}
+              bg-left-top
+            />
             {/* can be replaced by logo */}
-            <ul className="flex">
-                <li className="mx-4">New Employee</li>
-                <li className="mx-4">Assign Designation</li>
-                <li className="mx-4">Designation</li>
-                <li className="mx-4">Department</li>
+            <ul className="flex content-center self-center">
+
+                <NavButton
+                  className="mx-5"
+                  text="New Employee"
+                  type="button"
+                  onClick={() => {}}
+                />
+                <NavButton
+                  className="mx-5"
+                  text= "Assign Designation"
+                  type="button"
+                  onClick={() => {}}
+                  />
+                <NavButton
+                  className="mx-5"
+                  text= "New Designation"
+                  type="button"
+                  onClick={() => {}}
+                  />
+                <NavButton
+                  className="mx-5"
+                  text= "New Department"
+                  type="button"
+                  onClick={() => {}}
+                />
+
             </ul>
         </div>
 
