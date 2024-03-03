@@ -51,6 +51,52 @@ export async function createDepartment(formData: FormData){
     revalidatePath('/')
 }
 
+export async function createDesignation(formData: FormData){
+    const designation_name = formData.get('designation_name') as string
+    const department_id = Number(formData.get('department_id'))
+    const status = formData.get('status') as 'Active' | 'Inactive'
+    
+    await prisma.designation.create({
+        data: {
+            designation_name: formData.get('dept_name') as string,
+            departments:{
+                connect:{
+                    id: Number(formData.get('department_id'))
+                }
+            },
+            status: formData.get('status') as 'Active' | 'Inactive',
+        }
+    })
+
+    revalidatePath('/')
+}
+//contractual is not yet reflected in the database
+export async function createAssignDesignation(formData: FormData){
+    const emp_num = Number(formData.get('emp_num'))
+    const designation_id = Number(formData.get('designation_id'))
+    const employee_type = formData.get('employee_type') as 'Regular' | 'Irregular' | 'PartTime' | 'Intern' | 'Remote' 
+    const status = formData.get('status') as 'Active' | 'Resigned' | 'AWOL'
+    
+    await prisma.assign_designation.create({
+        data: {
+            employees:{
+                connect: {
+                    emp_num: Number(formData.get('emp_num'))
+                }
+            },
+            designation:{
+                connect:{
+                    id: Number(formData.get('designation_id'))
+                }
+            },
+            employee_type: formData.get('employee_type') as 'Regular' | 'Irregular' | 'PartTime' | 'Intern' | 'Remote',
+            status: formData.get('status') as 'Active' | 'Resigned' | 'AWOL',
+        }
+    })
+
+    revalidatePath('/')
+}
+
 //UPDATE FUNCTIONS
 
 export async function updateEmployee(formData: FormData){

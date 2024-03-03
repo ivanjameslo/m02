@@ -1,6 +1,6 @@
-import Department from "@/components/shared/department";
-import Navbar from "../shared/Navbar";
-import DepartmentTable from "../shared_results/departmentTable";
+import Department from "@/components/shared_add/department";
+import Navbar from "../ui/Navbar";
+import DepartmentTable from "../shared_table/departmentTable";
 
 const departmentPage = () => {
   return (

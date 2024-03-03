@@ -1,6 +1,6 @@
-import Navbar from "../shared/Navbar"
-import NewEmployee from "../shared/newEmployee"
-import NewEmployeeTable from "../shared_results/newEmployeeTable"
+import Navbar from "../ui/Navbar"
+import NewEmployee from "../shared_add/newEmployee"
+import NewEmployeeTable from "../shared_table/newEmployeeTable"
 
 const newEmployeePage = () => {
     return (

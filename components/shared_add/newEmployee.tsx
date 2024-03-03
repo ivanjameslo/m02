@@ -1,14 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-// import { useRouter } from 'next/router';
 import Form from "@/components/ui/Form";
 import Input from "@/components/ui/Input";
 import { createEmployee } from '@/app/actions/todoActions';
 import Button from '@/components/ui/Button';
 import { prisma } from '@/utils/prisma';
-import NewEmployeeTable from '../shared_results/newEmployeeTable';
-
 
 const NewEmployee = () => {
   return (

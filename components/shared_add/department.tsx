@@ -6,7 +6,7 @@ import Input from "@/components/ui/Input";
 import { createDepartment } from '@/app/actions/todoActions';
 import Button from '@/components/ui/Button';
 
-const NewDepartment = () => {
+const department = () => {
   return (
     <Form action={createDepartment} className="mt-5">
         <Input name="dept_name" type="text" placeholder="Department Name" />
@@ -16,4 +16,4 @@ const NewDepartment = () => {
   );
 };
 
-export default NewDepartment;
+export default department;
