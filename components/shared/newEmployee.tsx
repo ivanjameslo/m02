@@ -13,17 +13,34 @@ import NewEmployeeTable from '../shared_results/newEmployeeTable';
 const NewEmployee = () => {
   return (
     <div>
-      <div>
-        <Form action={createEmployee} className="">
-            <Input name="emp_num" type="Int" placeholder="Employee Number" />
-            <Input name="firstName" type="text" placeholder="First Name" />
-            <Input name="middleName" type="text" placeholder="Middle Name" />
-            <Input name="lastName" type="text" placeholder="Last Name" />
-            <Input name="address_line" type="text" placeholder="Address Line" />
-            <Input name="brgy" type="text" placeholder="Barangay" />
-            <Input name="province" type="text" placeholder="Province" />
-            <Input name="country" type="text" placeholder="Country" />
-            <Input name="zip_code" type="Int" placeholder="Zip Code" />
+      <div className="mt-8 ml-36 mr-36">
+        <Form action={createEmployee} className="flex flex-col">
+            <div className="flex align-middle justify-center">
+              <label>
+                Employee Number:
+              </label> 
+                <Input name="emp_num" type="Int" placeholder="Employee Number" />
+            </div>
+            <div className="flex items-center">
+              <label>
+                Name:
+              </label>
+              <Input name="firstName" type="text" placeholder="First Name" />
+              <Input name="middleName" type="text" placeholder="Middle Name" />
+              <Input name="lastName" type="text" placeholder="Last Name" />
+            </div>
+            <div>
+              <label>
+                Address:
+              </label>
+              <Input name="address_line" type="text" placeholder="Address Line" />
+              <Input name="brgy" type="text" placeholder="Barangay" />
+              <Input name="province" type="text" placeholder="Province" />
+            </div>
+            <div>
+              <Input name="country" type="text" placeholder="Country" />
+              <Input name="zip_code" type="Int" placeholder="Zip Code" />
+            </div>
             <Button type="submit" text="Add"/>
         </Form>
      </div>

@@ -32,25 +32,21 @@ const newEmployeeTable = async () => {
     return (
         <div className="flex flex-col gap-5 items-center justify-center mt-10 w-full">
             {employeeData.map((employees, id) => (
-                <div key={id} className="flex flex-row gap-5 items-center justify-center w-full">
-                    <div className="flex flex-col gap-2 items-center justify-center">
-                        <p>{employees.id}</p>
-                        <p>{employees.emp_num}</p>
-                        <p>{employees.firstName}</p>
-                        <p>{employees.middleName}</p>
-                        <p>{employees.lastName}</p>
-                    </div>
-                    <div className="flex flex-col gap-2 items-center justify-center">
-                        <p>{employees.address_line}</p>
-                        <p>{employees.brgy}</p>
-                        <p>{employees.province}</p>
-                        <p>{employees.country}</p>
-                        <p>{employees.zip_code}</p>
-                    </div>
+                <tr key={id} className="flex flex-row gap-5 items-center justify-center w-full">
+                    <td> {employees.id} </td>
+                    <td> {employees.emp_num} </td>
+                    <td> {employees.firstName} </td>
+                    <td> {employees.middleName} </td>
+                    <td> {employees.lastName} </td>
+                    <td> {employees.address_line} </td>
+                    <td> {employees.brgy} </td>
+                    <td> {employees.province} </td>
+                    <td> {employees.country} </td>
+                    <td> {employees.zip_code} </td>
                     <div className="flex items-center gap-5">
                         <NewEmployeeUpdate employees={employees} />
                     </div>
-                </div>
+                </tr>
             ))}
 
         </div>

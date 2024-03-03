@@ -7,10 +7,12 @@ import { createEmployee } from "./actions/todoActions";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import NewEmployeeTable from "../components/shared_results/newEmployeeTable";
+import Navbar from "@/components/shared/Navbar";
 
 export default function Home() {
   return (
     <main>
+      <Navbar />
       <NewEmployee />
       <NewEmployeeTable />
     </main>

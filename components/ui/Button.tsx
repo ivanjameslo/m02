@@ -1,7 +1,7 @@
 "use client"
 
-import {ReactNode} from 'react'
-import clsx from "clsx"
+import clsx from "clsx";
+import { ReactNode } from 'react';
 
 interface buttonProps{
     type?: "button" | "submit" | "reset";
@@ -17,8 +17,18 @@ const Button = ({type, text, onclick, actionButton}: buttonProps) => {
     onClick={onclick}
     type={type}
     className={clsx(
-        actionButton && 'bg-orange-700 rounded-full p-2 text-white',
-        'bg-orange-700 px-2 text-white'
+      actionButton && 'hover:text-blue-700',
+      'bg-blue-900',
+      'text-white',
+      actionButton && 'focus:font-bold',
+      'hover:bg-blue-600',
+      'focus:outline-none',
+      'border border-transparent',
+      'rounded-md',
+      'px-10 py-2',
+      'text-base',
+      'transition-all duration-200',
+      'w-full'
     )}
     >{text}</button>
     </>

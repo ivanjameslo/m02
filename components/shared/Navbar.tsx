@@ -19,25 +19,25 @@ const Navbar = () => {
                   className="mx-5"
                   text="New Employee"
                   type="button"
-                  onClick={() => {}}
+                  // onClick={() => {}}
                 />
                 <NavButton
                   className="mx-5"
                   text= "Assign Designation"
                   type="button"
-                  onClick={() => {}}
+                  // onClick={() => {}}
                   />
                 <NavButton
                   className="mx-5"
                   text= "New Designation"
                   type="button"
-                  onClick={() => {}}
+                  // onClick={() => {}}
                   />
                 <NavButton
                   className="mx-5"
                   text= "New Department"
                   type="button"
-                  onClick={() => {}}
+                  // onClick={() => {}}
                 />
 
             </ul>
