@@ -8,7 +8,7 @@ import Button from '@/components/ui/Button';
 
 const NewDepartment = () => {
   return (
-    <Form action={createDepartment} className="">
+    <Form action={createDepartment} className="mt-5">
         <Input name="dept_name" type="text" placeholder="Department Name" />
         <Input name="status" type="text" placeholder="Status" />
         <Button type="submit" text="Add"/>

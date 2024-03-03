@@ -7,6 +7,8 @@ import Button from "@/components/ui/Button"
 import { useState } from "react"
 // import {BiEdit} from 'react-icons/bi'
 
+
+//Edit Layout
 const newEmployeeUpdate = (employees: any) => {
   const [newEmployeeUpdate, setNewEmployeeUpdate] = useState(false);
   const [formData, setFormData] = useState({
@@ -34,7 +36,7 @@ const newEmployeeUpdate = (employees: any) => {
   
   return (
     <div className="flex gap-5 items-center">
-        <Button onclick={handleEdit} text="Select" actionButton />
+        <Button onclick={handleEdit} text="Update" actionButton />
 
         {newEmployeeUpdate ? (
           <div>

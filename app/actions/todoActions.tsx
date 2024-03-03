@@ -2,6 +2,8 @@
 
 import { revalidatePath } from "next/cache"
 import { PrismaClient } from "@prisma/client"
+import { NextResponse } from "next/server"
+
 
 const prisma = new PrismaClient()
 
@@ -49,8 +51,10 @@ export async function createDepartment(formData: FormData){
     revalidatePath('/')
 }
 
+//UPDATE FUNCTIONS
+
 export async function updateEmployee(formData: FormData){
-    const id = Number(formData.get('id'))
+    // const id = Number(formData.get('id'))
     const emp_num = Number(formData.get('new_emp_num'))
     const firstName = formData.get('new_firstName') as string
     const middleName = formData.get('new_middleName') as string
@@ -61,9 +65,10 @@ export async function updateEmployee(formData: FormData){
     const country = formData.get('new_country') as string
     const zip_code = Number(formData.get('new_zip_code'))
 
+    try{
     const updatedEmployeeData = await prisma.employees.update({
         where: {
-            id: id
+            emp_num: emp_num
         },
         data: {
             emp_num,
@@ -78,4 +83,37 @@ export async function updateEmployee(formData: FormData){
         },
     });
     revalidatePath('/')
+} catch (error) {
+    console.error(error);
+}}
+
+
+//DELETE FUNCTIONS
+
+export async function deleteEmployee(emp_num: number){
+    try{
+        const deletedEmployee = await prisma.employees.delete({
+            where: {
+                emp_num: emp_num
+            }
+        })
+        return NextResponse.json(deleteEmployee)
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
+
+// export async function deleteEmployee(emp_num: number){
+//     try{
+//         const deletedEmployee = await prisma.employees.delete({
+//             where: {
+//                 emp_num: emp_num
+//             }
+//         })
+//         return NextResponse.json(deleteEmployee)
+//     } catch (error) {
+//         console.log(error)
+//     }
+    
+// }

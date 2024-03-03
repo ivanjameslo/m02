@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 interface buttonProps{
     type?: "button" | "submit" | "reset";
     text: string | ReactNode;
-    onclick?: () => void;
+    onclick?: () => void | undefined;
     actionButton?:  boolean;
 }
 
