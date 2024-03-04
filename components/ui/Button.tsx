@@ -6,22 +6,23 @@ import { ReactNode } from 'react';
 interface buttonProps{
     type?: "button" | "submit" | "reset";
     text: string | ReactNode;
-    onclick?: () => void | undefined;
+    onClick?: () => void | undefined;
     actionButton?:  boolean;
 }
 
-const Button = ({type, text, onclick, actionButton}: buttonProps) => {
+const Button = ({type, text, onClick, actionButton}: buttonProps) => {
   return (
     <>
     <button
-    onClick={onclick}
+    onClick={onClick}
     type={type}
     className={clsx(
-      actionButton && 'hover:text-blue-700',
+      actionButton && 'hover:text-white',
       'bg-blue-900',
       'text-white',
       actionButton && 'focus:font-bold',
       'hover:bg-blue-600',
+      'text-white',
       'focus:outline-none',
       'border border-transparent',
       'rounded-md',

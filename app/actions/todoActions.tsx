@@ -136,11 +136,11 @@ export async function updateEmployee(formData: FormData){
 
 //DELETE FUNCTIONS
 
-export async function deleteEmployee(emp_num: number){
+export async function deleteEmployee(id: number){
     try{
         const deletedEmployee = await prisma.employees.delete({
             where: {
-                emp_num: emp_num
+                id: Number(id)
             }
         })
         return NextResponse.json(deleteEmployee)
@@ -149,17 +149,3 @@ export async function deleteEmployee(emp_num: number){
     }
     
 }
-
-// export async function deleteEmployee(emp_num: number){
-//     try{
-//         const deletedEmployee = await prisma.employees.delete({
-//             where: {
-//                 emp_num: emp_num
-//             }
-//         })
-//         return NextResponse.json(deleteEmployee)
-//     } catch (error) {
-//         console.log(error)
-//     }
-    
-// }

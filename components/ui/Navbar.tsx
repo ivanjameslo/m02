@@ -10,7 +10,7 @@ const Navbar = () => {
               alt='logo'
               width={150}
               height={100}
-              bg-left-top
+              className='bg-left-top'
             />
             {/* can be replaced by logo */}
             <ul className="flex content-center self-center">
