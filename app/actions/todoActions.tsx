@@ -38,6 +38,7 @@ export async function createEmployee(formData: FormData){
 }
 
 export async function createDepartment(formData: FormData){
+    const id = Number(formData.get('id'))
     const dept_name = formData.get('dept_name') as string
     const status = formData.get('status') as 'Active' | 'Inactive'
     
@@ -133,6 +134,26 @@ export async function updateEmployee(formData: FormData){
     console.error(error);
 }}
 
+export async function updateDepartment(formData: FormData){
+    const id = Number(formData.get('id'))
+    const dept_name = formData.get('new_dept_name') as string
+    const status = formData.get('new_status') as string
+
+    try {
+        const updatedDepartmentData = await prisma.departments.update({
+            where: {
+                id: id
+            },
+            data: {
+                dept_name,
+                status
+            },
+        });
+    } catch (error) {
+        console.error(error);
+    }
+    revalidatePath('/')
+}
 
 //DELETE FUNCTIONS
 
@@ -143,7 +164,7 @@ export async function deleteEmployee(id: number){
                 id: Number(id)
             }
         })
-        return NextResponse.json(deleteEmployee)
+        return NextResponse.json(deletedEmployee)
     } catch (error) {
         console.log(error)
     }

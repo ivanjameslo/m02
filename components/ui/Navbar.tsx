@@ -14,7 +14,6 @@ const Navbar = () => {
             />
             {/* can be replaced by logo */}
             <ul className="flex content-center self-center">
-
                 <NavButton
                   className="mx-5"
                   text="New Employee"
@@ -39,7 +38,6 @@ const Navbar = () => {
                   type="button"
                   // onClick={() => {}}
                 />
-
             </ul>
         </div>
 
