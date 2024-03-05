@@ -1,6 +1,6 @@
 // import { prisma } from "@/utils/prisma";
 import { PrismaClient } from '@prisma/client';
-
+import DesignationDelete from '../shared_delete/designationDelete';
 
 
 const prisma = new PrismaClient();
@@ -38,11 +38,12 @@ const designationTable = async () => {
                             <NewEmployeeUpdate employees={employees} />
                         </div>
                     </td>
+                    */}
                     <td>
                         <div className="flex items-center gap-5">
-                           <NewEmployeeDelete />
+                           <DesignationDelete id={designation.id}/>
                         </div>
-                    </td> */}
+                    </td>
                 </tr>
             ))}
             </tbody>

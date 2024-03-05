@@ -1,6 +1,7 @@
 // import { prisma } from "@/utils/prisma";
 import { PrismaClient } from '@prisma/client';
-import DepartmentUpdate from '../shared_update/DepartmentUpdate';
+// import DepartmentUpdate from '../shared_update/DepartmentUpdate';
+import DepartmentDelete from '../shared_delete/departmentDelete';
 
 
 
@@ -32,16 +33,16 @@ const departmentTable = async () => {
                     <td> {departments.id} </td>
                     <td> {departments.dept_name} </td>
                     <td> {departments.status} </td>
-                    <td>
+                    {/* <td>
                         <div className="flex items-center gap-5">
                             <DepartmentUpdate departments={departments} />
                         </div>
-                    </td>
-                    {/* <td>
-                        <div className="flex items-center gap-5">
-                           <NewEmployeeDelete />
-                        </div>
                     </td> */}
+                    <td>
+                        <div className="flex items-center gap-5">
+                           <DepartmentDelete id={departments.id}/>
+                        </div>
+                    </td>
                 </tr>
             ))}
             </tbody>

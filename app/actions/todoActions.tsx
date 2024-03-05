@@ -134,25 +134,50 @@ export async function updateEmployee(formData: FormData){
     console.error(error);
 }}
 
-export async function updateDepartment(formData: FormData){
+// export async function updateDepartment(formData: FormData){
+//     const id = Number(formData.get('id'))
+//     const dept_name = formData.get('new_dept_name') as string
+//     const status = formData.get('new_status') as string
+
+//     try {
+//         const updatedDepartmentData = await prisma.departments.update({
+//             where: {
+//                 id: id
+//             },
+//             data: {
+//                 dept_name,
+//                 status
+//             },
+//         });
+//     } catch (error) {
+//         console.error(error);
+//     }
+//     revalidatePath('/')
+// }
+
+export async function updateAssign(formData: FormData){
     const id = Number(formData.get('id'))
-    const dept_name = formData.get('new_dept_name') as string
+    const emp_num = Number(formData.get('new_emp_num'))
+    const designation_id = Number(formData.get('new_designation_id'))
+    const employee_type = formData.get('employee_type') as string
     const status = formData.get('new_status') as string
 
-    try {
-        const updatedDepartmentData = await prisma.departments.update({
-            where: {
-                id: id
-            },
-            data: {
-                dept_name,
-                status
-            },
-        });
-    } catch (error) {
-        console.error(error);
-    }
-    revalidatePath('/')
+    try{
+    const updatedAssignData = await prisma.assign_designation.update({
+        where: {
+            id: id
+        },
+        data: {
+            emp_num,
+            designation_id,
+            employee_type,
+            status
+        },
+    });
+} catch (error) {
+    console.error(error);
+}
+revalidatePath('/')
 }
 
 //DELETE FUNCTIONS
@@ -165,6 +190,48 @@ export async function deleteEmployee(id: number){
             }
         })
         return NextResponse.json(deletedEmployee)
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export async function deleteAssign(id: number){
+    try{
+        const deletedAssign = await prisma.assign_designation.delete({
+            where: {
+                id: Number(id)
+            }
+        })
+        return NextResponse.json(deletedAssign)
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export async function deleteDepartment(id: number){
+    try{
+        const deletedDepartment = await prisma.departments.delete({
+            where: {
+                id: Number(id)
+            }
+        })
+        return NextResponse.json(deletedDepartment)
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export async function deleteDesignation(id: number){
+    try{
+        const deletedDesignation = await prisma.designation.delete({
+            where: {
+                id: Number(id)
+            }
+        })
+        return NextResponse.json(deletedDesignation)
     } catch (error) {
         console.log(error)
     }
