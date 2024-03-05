@@ -5,7 +5,6 @@ import NewEmployeeTable from "../shared_table/newEmployeeTable"
 const newEmployeePage = () => {
     return (
         <div>
-                <Navbar />
                 <NewEmployee />
                 <NewEmployeeTable />
         </div>

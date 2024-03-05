@@ -5,7 +5,8 @@ import DepartmentTable from "@/components/shared_table/departmentTable";
 const DepartmentPage = () => {
   return (
     <div>
-        Department Page
+        <Department />
+        <DepartmentTable />
     </div>
   )
 }

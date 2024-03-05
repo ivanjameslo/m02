@@ -1,5 +1,6 @@
-import Navbar from "../ui/Navbar"
-import AssignDesignation from "../shared_add/assignDesignation"
+import React from 'react'
+import Navbar from "@/components/ui/Navbar"
+import AssignDesignation from "@/components/shared_add/assignDesignation"
 
 const assignDesignationPage = () => {
   return (

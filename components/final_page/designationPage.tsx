@@ -5,7 +5,6 @@ import DesignationTable from "../shared_table/designationTable"
 const designationPage = () => {
   return (
     <div>
-        <Navbar />
         <Designation />
         <DesignationTable />
     </div>
