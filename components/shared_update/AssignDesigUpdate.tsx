@@ -1,14 +1,11 @@
 "use client"
 
-import { updateEmployee } from "@/app/actions/todoActions"
+import { updateAssign } from "@/app/actions/todoActions"
 import Form from "@/components/ui/Form"
 import Input from "@/components/ui/Input"
 import Button from "@/components/ui/Button"
 import { useState } from "react"
-// import {BiEdit} from 'react-icons/bi'
 
-
-//Edit Layout
 const assignUpdate = (assign_designation: any) => {
   const [assignUpdate, setAssignUpdate] = useState(false);
   const [formData, setFormData] = useState({
@@ -21,6 +18,7 @@ const assignUpdate = (assign_designation: any) => {
   const handleEdit = () => {
     setAssignUpdate(!assignUpdate);
   }
+  
   const handleSubmit = () => {
     setAssignUpdate(false);
   }
@@ -35,7 +33,7 @@ const assignUpdate = (assign_designation: any) => {
 
         {assignUpdate ? (
           <div className="flex flex-col">
-            <Form action={updateEmployee} onSubmit={handleSubmit}>
+            <Form action={updateAssign} onSubmit={handleSubmit}>
                 <div className="">
                   <Input name="emp_num" value={assign_designation.id} type="hidden" />
                   <Input name="designation_id" value={assign_designation.id} type="hidden" />

@@ -159,7 +159,7 @@ export async function updateAssign(formData: FormData){
     // const id = Number(formData.get('id'))
     const emp_num = Number(formData.get('new_emp_num'))
     const designation_id = Number(formData.get('new_designation_id'))
-    const employee_type = formData.get('employee_type') as string
+    const employee_type = formData.get('new_employee_type') as string
     const status = formData.get('new_status') as string
 
     try{
