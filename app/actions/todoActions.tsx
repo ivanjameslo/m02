@@ -59,7 +59,7 @@ export async function createDesignation(formData: FormData){
     
     await prisma.designation.create({
         data: {
-            designation_name: formData.get('dept_name') as string,
+            designation_name: formData.get('designation_name') as string,
             departments:{
                 connect:{
                     id: Number(formData.get('department_id'))
@@ -156,7 +156,7 @@ export async function updateEmployee(formData: FormData){
 // }
 
 export async function updateAssign(formData: FormData){
-    const id = Number(formData.get('id'))
+    // const id = Number(formData.get('id'))
     const emp_num = Number(formData.get('new_emp_num'))
     const designation_id = Number(formData.get('new_designation_id'))
     const employee_type = formData.get('employee_type') as string
@@ -165,7 +165,7 @@ export async function updateAssign(formData: FormData){
     try{
     const updatedAssignData = await prisma.assign_designation.update({
         where: {
-            id: id
+            emp_num: emp_num
         },
         data: {
             emp_num,
@@ -174,10 +174,10 @@ export async function updateAssign(formData: FormData){
             status
         },
     });
+    revalidatePath('/')
 } catch (error) {
     console.error(error);
 }
-revalidatePath('/')
 }
 
 //DELETE FUNCTIONS

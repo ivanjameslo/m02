@@ -30,7 +30,7 @@ model employees {
 model assign_designation {
   id Int @id @default(autoincrement())
   employees employees @relation(fields: [emp_num], references: [emp_num])
-  emp_num Int 
+  emp_num Int @unique
   designation designation @relation(fields: [designation_id], references: [id])
   designation_id Int
   employee_type String
