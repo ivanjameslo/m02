@@ -18,6 +18,7 @@ const Navbar = () => {
                   className="mx-5"
                   text="New Employee"
                   type="button"
+                  // <Link to="@/app/">Contact</Link>
                   // onClick={() => {}}
                 />
                 <NavButton

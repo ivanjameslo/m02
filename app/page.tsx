@@ -16,8 +16,8 @@ import AssignDesignationPage from "@/components/final_page/assignDesignationPage
 export default function Home() {
   return (
     <main>
-      {/* <AssignDesignationPage /> */}
-      <NewEmployeePage />
+      <AssignDesignationPage />
+      {/* <NewEmployeePage /> */}
     </main>
   );
 }
