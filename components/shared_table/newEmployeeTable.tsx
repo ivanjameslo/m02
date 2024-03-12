@@ -41,17 +41,6 @@ const newEmployeeTable = async () => {
 
         <table className="flex flex-col gap-5 items-center justify-center mt-10 w-full table-auto">
             <tbody>
-                {/* <tr>
-                    <td className= "px-5 py-5">Employee Number</td>
-                    <td className= "px-5 py-5">First Name</td>
-                    <td className= "px-5 py-5">Middle Name</td>
-                    <td className= "px-5 py-5">Last Name</td>
-                    <td className= "px-5 py-5">AddressLine </td>
-                    <td className= "px-5 py-5">Barangay </td>
-                    <td className= "px-5 py-5">Province</td>
-                    <td className= "px-5 py-5">Country </td>
-                    <td className= "px-5 py-5">Zip Code </td>
-                </tr> */}
             {employeeData.map((employees, id) => (
                 <tr key={id}>
                     <td className= "px-5 py-5"> {employees.id} </td>

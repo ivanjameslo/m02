@@ -25,29 +25,24 @@
 
 const startingPage = () => {
   return (
-    <div className="text-center">
-      <div className="m-4">
+    <div className="text-center place-content-center">
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className="m-4 text-6xl font-bold text-blue-900">
         <h1>Employee Management System</h1>
       </div>
-
-      <div className="bg-blue-900 p-5 text-white ">
-        <div className="flex justify-between">
-          <a href="/">
-            
-            </a>
-            <ul className="flex content-center self-center">
-              <a href="/new-employee" className="mx-5 hover:text-blue400">Employee</a>
-              <a href="/assign-designation" className="mx-5 hover:text-blue400">Assign Designation</a>
-              <a href="/department" className="mx-5 hover:text-blue400">Department</a>
-              <a href="/designation" className="mx-5 hover:text-blue400">Designation</a>
-            </ul>
-        </div>
-    </div>
-
-      <div className="m-4">
+      <br></br>
+      <div className="m-4 text-2xl">
         <h2>SAI Group</h2>
       </div>
-      <div className="m-4">
+      <div className="m-4 text-2xl">
         <p>Haw  |  Lo  |  Mejorada</p>
       </div>
     </div>

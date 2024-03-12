@@ -25,29 +25,24 @@ async function getDesignationData(){
 const designationTable = async () => {
     const designationData = await getDesignationData()
     return (
-        <table className="flex flex-col gap-5 items-center justify-center mt-10 w-full table-auto">
-            <tbody>
-            {designationData.map((designation, id) => (
-                <tr key={id} className="flex flex-row gap-5 items-center justify-center w-full">
-                    <td> {designation.id} </td>
-                    <td> {designation.designation_name} </td>
-                    <td> {designation.department_id} </td>
-                    <td> {designation.status} </td>
-                    {/* <td>
-                        <div className="flex items-center gap-5">
-                            <NewEmployeeUpdate employees={employees} />
-                        </div>
-                    </td>
-                    */}
-                    <td>
-                        <div className="flex items-center gap-5">
-                           <DesignationDelete id={designation.id}/>
-                        </div>
-                    </td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
+
+            <table className="flex flex-col gap-5 items-center justify-center mt-10 w-full table-auto">
+                <tbody>
+                {designationData.map((designation, id) => (
+                    <tr key={id}>
+                        <td className= "px-5 py-5"> {designation.id} </td>
+                        <td className= "px-5 py-5"> {designation.designation_name} </td>
+                        <td className= "px-5 py-5"> {designation.department_id} </td>
+                        <td className= "px-5 py-5"> {designation.status} </td>
+                        <td>
+                            <div className="flex items-center gap-5">
+                            <DesignationDelete id={designation.id}/>
+                            </div>
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
     )
 }
 

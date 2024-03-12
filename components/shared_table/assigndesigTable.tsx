@@ -26,15 +26,16 @@ async function getAssignData(){
 const assignTable = async () => {
     const assignData = await getAssignData()
     return (
+        
         <table className="flex flex-col gap-5 items-center justify-center mt-10 w-full table-auto">
             <tbody>
             {assignData.map((assign_designation, id) => (
-                <tr key={id} className="flex flex-row gap-5 items-center justify-center w-full">
-                    <td> {assign_designation.id} </td>
-                    <td> {assign_designation.emp_num} </td>
-                    <td> {assign_designation.designation_id} </td>
-                    <td> {assign_designation.employee_type} </td>
-                    <td> {assign_designation.status} </td>
+                <tr key={id}>
+                    <td className= "px-5 py-5"> {assign_designation.id} </td>
+                    <td className= "px-5 py-5"> {assign_designation.emp_num} </td>
+                    <td className= "px-5 py-5"> {assign_designation.designation_id} </td>
+                    <td className= "px-5 py-5"> {assign_designation.employee_type} </td>
+                    <td className= "px-5 py-5"> {assign_designation.status} </td>
                     <td>
                         <div className="flex items-center gap-5">
                             <AssignDesigUpdate assign_designation={assign_designation} />
