@@ -60,7 +60,7 @@ const newEmployeeTable = async () => {
                     </td>
                     <td>
                         <div className="flex items-center gap-5">
-                            <NewEmployeeDelete id={employees.id} />
+                            <NewEmployeeDelete emp_num={employees.emp_num} />
                         </div> 
                     </td>
                 </tr>

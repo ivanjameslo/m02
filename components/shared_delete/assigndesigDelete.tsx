@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 
 
 
-const newEmployeeDelete = ({ id }: { id: any }) => {
+const newAssignDelete = ({ id }: { id: any }) => {
   const router = useRouter();
   const handleDelete = (id: any) => {
     try {
@@ -16,10 +16,10 @@ const newEmployeeDelete = ({ id }: { id: any }) => {
     }
     router.push('/');
   }
-
+4
   return (
       <Button text="Delete" actionButton={true} type="submit" onClick={() => handleDelete(id)} />
   )
 }
 
-export default newEmployeeDelete
+export default newAssignDelete

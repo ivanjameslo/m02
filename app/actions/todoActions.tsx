@@ -98,6 +98,63 @@ export async function createAssignDesignation(formData: FormData){
     revalidatePath('/')
 }
 
+export async function createLeaves(formData: FormData){
+    const emp_num = Number(formData.get('emp_num'))
+    let start_leave_date = formData.get('start_leave_date')
+    let end_leave_date = formData.get('end_leave_date')
+    const leave_type = formData.get('leave_type') as 'Vacation' | 'Sick' | 'Maternity' | 'Paternity' 
+    const status = formData.get('status') as 'Pending' | 'Approved' | 'Denied'
+    
+    if (typeof start_leave_date === 'string') {
+        start_leave_date = new Date(start_leave_date).toString();
+    }
+    if (typeof end_leave_date === 'string') {
+        end_leave_date = new Date(end_leave_date).toString();
+    }
+
+    await prisma.leaves.create({
+        data: {
+            employees:{
+                connect: {
+                    emp_num: emp_num
+                }
+            },
+            start_leave_date: start_leave_date instanceof Date ? start_leave_date : new Date(),
+            end_leave_date: end_leave_date instanceof Date ? end_leave_date : new Date(),
+            leave_type: leave_type,
+            status: status,
+        }
+    })
+
+    revalidatePath('/')
+}
+
+
+export async function createSignatories(formData: FormData){
+    const emp_num = Number(formData.get('emp_num'))
+    const highersuperior = Number(formData.get('highersuperior'))
+    const status = formData.get('status') as 'Active' | 'Inactive'
+    
+    await prisma.signatories.create({
+        data: {
+            employees:{
+                connect: {
+                    emp_num: Number(formData.get('emp_num'))
+                }
+            },
+            //superior is questionable, must be the table in your database
+            superior:{
+                connect: {
+                    emp_num: Number(formData.get('highersuperior'))
+                }
+            },
+            status: formData.get('status') as 'Active' | 'Inactive',
+        }
+    })
+
+    revalidatePath('/')
+}
+
 //UPDATE FUNCTIONS
 
 export async function updateEmployee(formData: FormData){
@@ -182,11 +239,11 @@ export async function updateAssign(formData: FormData){
 
 //DELETE FUNCTIONS
 
-export async function deleteEmployee(id: number){
+export async function deleteEmployee(emp_num: number){
     try{
         const deletedEmployee = await prisma.employees.delete({
             where: {
-                id: Number(id)
+                emp_num: Number(emp_num)
             }
         })
         return NextResponse.json(deletedEmployee)

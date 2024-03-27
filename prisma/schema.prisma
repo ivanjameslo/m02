@@ -25,6 +25,9 @@ model employees {
   country String
   zip_code Int
   assignment assign_designation[]
+  leaves leaves[]
+  signatoriesEmployee signatories[] @relation("signatoriesEmployees")
+  signatoriesSuperior signatories[] @relation("signatoriesSuperior")
 }
 
 model assign_designation {
@@ -51,4 +54,25 @@ model designation {
   department_id Int
   status String
   assign_designation assign_designation[]
+}
+
+model leaves {
+  id Int @id @default(autoincrement())
+  emp_num Int
+  employees employees @relation(fields: [emp_num], references: [emp_num])
+  start_leave_date DateTime
+  end_leave_date DateTime
+  leave_type String
+  status String
+}
+
+model signatories {
+  id Int @id @default(autoincrement())
+  emp_num Int @unique
+  highersuperior Int
+  employees employees @relation(name: "signatoriesEmployees", fields: [emp_num], references: [emp_num])
+  superior employees @relation(name: "signatoriesSuperior", fields: [highersuperior], references: [emp_num])
+  // employees employees @relation("EmployeeToSignatories", fields: [emp_num], references: [emp_num])
+  // superior employees @relation("SuperiorToSignatories", fields: [highersuperior], references: [emp_num])
+  status String
 }

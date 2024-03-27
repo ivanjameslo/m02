@@ -6,11 +6,11 @@ import { useRouter } from 'next/navigation'
 
 
 
-const newEmployeeDelete = ({ id }: { id: any }) => {
+const newEmployeeDelete = ({ emp_num }: { emp_num: any }) => {
   const router = useRouter();
-  const handleDelete = (id: any) => {
+  const handleDelete = (emp_num: any) => {
     try {
-      deleteEmployee(id)
+      deleteEmployee(emp_num)
     } catch (error) {
       console.log(error)
     }
@@ -18,7 +18,7 @@ const newEmployeeDelete = ({ id }: { id: any }) => {
   }
 
   return (
-      <Button text="Delete" actionButton={true} type="submit" onClick={() => handleDelete(id)} />
+      <Button text="Delete" actionButton={true} type="submit" onClick={() => handleDelete(emp_num)} />
   )
 }
 

@@ -22,6 +22,8 @@ const Navbar = () => {
               <a href="/assign-designation" className="mx-5 hover:text-blue400">Assign Designation</a>
               <a href="/department" className="mx-5 hover:text-blue400">Department</a>
               <a href="/designation" className="mx-5 hover:text-blue400">Designation</a>
+              <a href="/leaves" className="mx-5 hover:text-blue400">Leave Request</a>
+              <a href="/signatories" className="mx-5 hover:text-blue400">Signatories</a>
             </ul>
         </div>
     </div>
