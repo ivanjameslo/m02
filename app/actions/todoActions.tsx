@@ -71,11 +71,11 @@ export async function createDesignation(formData: FormData){
 
     revalidatePath('/')
 }
-//contractual is not yet reflected in the database
+
 export async function createAssignDesignation(formData: FormData){
     const emp_num = Number(formData.get('emp_num'))
     const designation_id = Number(formData.get('designation_id'))
-    const employee_type = formData.get('employee_type') as 'Regular' | 'Irregular' | 'PartTime' | 'Intern' | 'Remote' 
+    const employee_type = formData.get('employee_type') as 'Regular' | 'Irregular' | 'PartTime' | 'Intern' | 'Remote' | 'Contractual'
     const status = formData.get('status') as 'Active' | 'Resigned' | 'AWOL'
     
     await prisma.assign_designation.create({
