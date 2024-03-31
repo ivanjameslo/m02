@@ -34,8 +34,8 @@ const leaveTable = async () => {
                     <tr key={id}>
                         <td className= "px-5 py-5"> {leaves.id} </td>
                         <td className= "px-5 py-5"> {leaves.emp_num} </td>
-                        <td className= "px-5 py-5"> {leaves.start_leave_date} </td>
-                        <td className= "px-5 py-5"> {leaves.end_leave_date} </td>
+                        <td className= "px-5 py-5"> {leaves.start_leave_date.toString()} </td>
+                        <td className= "px-5 py-5"> {leaves.end_leave_date.toString()} </td>
                         <td className= "px-5 py-5"> {leaves.leave_type} </td>
                         <td className= "px-5 py-5"> {leaves.status} </td>
                         {/* <td>
@@ -50,4 +50,4 @@ const leaveTable = async () => {
     )
 }
 
-export default designationTable
+export default leaveTable

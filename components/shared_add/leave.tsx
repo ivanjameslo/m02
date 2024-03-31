@@ -6,6 +6,8 @@ import Input from "@/components/ui/Input";
 import { createLeaves } from '@/app/actions/todoActions';
 import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
+import ReactDateTimeClass from 'react-datetime';
+import { Moment } from 'moment';
 
 const leave = () => {
 
@@ -53,6 +55,25 @@ const leave = () => {
         });
     };
 
+    const handleDateChange = (date: string | Moment, name: string) => {
+        let dateString: string;
+
+        if (typeof date === 'string') {
+            dateString = new Date(date).toISOString();
+        } else {
+            dateString = date.toDate().toISOString();
+        }
+
+        setFormData((prevData) => (
+            {
+                ...prevData,
+                [name]: dateString
+            }
+        ));
+
+        console.log(formData);
+    }
+
     //fetching for dropdowns
     const [employees, setEmployees] = useState([]);
         const fetchEmployees = async () => {
@@ -96,21 +117,34 @@ const leave = () => {
                     <label className="text-color-black text-right self-center">Start Leave</label>
                 </div>
                 <div className="col-start-3 col-end-13">
-                    <input name="start_leave_date" type="Date" placeholder="Start Leave" onChange={handleChange} />
+                    {/* <input name="start_leave_date" type="Date" placeholder="Start Leave" onChange={handleChange} /> */}
+                    <ReactDateTimeClass
+                            dateFormat="YYYY-MM-DD"
+                            timeFormat="HH:mm:ss.SSS"
+                            onChange={(date) => handleDateChange(date, 'start_leave_date')}
+                    />
                 </div>
 
                 <div className="text-right col-start-1 col-end-3">
                     <label className="text-color-black text-right self-center">End Leave</label>
                 </div>
                 <div className="col-start-3 col-end-13">
-                    <input name="end_leave_date" type="Date" placeholder="End Leave" onChange={handleChange} />
+                    {/* <input name="end_leave_date" type="Date" placeholder="End Leave" onChange={handleChange} /> */}
+                    <ReactDateTimeClass
+                            dateFormat="YYYY-MM-DD"
+                            timeFormat="HH:mm:ss.SSS"
+                            isValidDate={(currentDate) => {
+                                return currentDate.isAfter(new Date(formData.start_leave_date));
+                            }}
+                            onChange={(date) => handleDateChange(date, 'end_leave_date')}
+                            className=''
+                    />
                 </div>
 
                 <div className="text-right col-start-1 col-end-3">
                     <label className="text-color-black text-right self-center">Leave Type</label>
                 </div>
                 <div className="col-start-3 col-end-13">
-                    {/* <Input name="leave_type" type="text" placeholder="Leave Type" /> */}
                     <select name="leave_type" value={formData.leave_type} onChange={handleChange}>
                         <option value="">Select Leave Type</option>
                         <option value="Vacation">Vacation</option>
@@ -124,7 +158,6 @@ const leave = () => {
                     <label className="text-color-black text-right self-center">Status</label>
                 </div>
                 <div className="col-start-3 col-end-13">
-                    {/* <Input name="status" type="text" placeholder="Status" /> */}
                     <select name="status" value={formData.status} onChange={handleChange}>
                         <option value="Pending">Pending</option>
                         <option value="Approved">Approved</option>
