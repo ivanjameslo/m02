@@ -107,7 +107,7 @@ const leave = () => {
                         <option value="">Select Employee Number</option>
                         {employees.map((employees: any) => (
                             <option key={employees.emp_num} value={employees.emp_num}>
-                                {employees.emp_num}
+                                {employees.firstName} {employees.lastName}
                             </option>
                         ))}
                     </select>

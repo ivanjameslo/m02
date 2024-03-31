@@ -72,7 +72,5 @@ model signatories {
   highersuperior Int
   employees employees @relation(name: "signatoriesEmployees", fields: [emp_num], references: [emp_num])
   superior employees @relation(name: "signatoriesSuperior", fields: [highersuperior], references: [emp_num])
-  // employees employees @relation("EmployeeToSignatories", fields: [emp_num], references: [emp_num])
-  // superior employees @relation("SuperiorToSignatories", fields: [highersuperior], references: [emp_num])
   status String
 }
