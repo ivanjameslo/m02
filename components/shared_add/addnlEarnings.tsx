@@ -150,7 +150,7 @@ const addnlEarning = () => {
                   <ReactDateTimeClass
                     dateFormat="YYYY-MM-DD"
                     timeFormat="HH:mm:ss.SSS"
-                    onChange={(date) => handleDateChange(date, 'start_leave_date')}
+                    onChange={(date) => handleDateChange(date, 'date')}
                   />
                 </div>
                 
