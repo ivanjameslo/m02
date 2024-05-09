@@ -72,44 +72,59 @@ const designation = () => {
       }, []);
     
     return (
-        <div className= "pt-5 ">
-            <form onSubmit={handleSubmit} className="mt-5 text-blue-900 px-5 grid grid-cols-13 gap-2">
-                <div className="text-right col-start-1 col-end-3">
-                    <label className="text-color-black text-right self-center">Designation Name</label>
-                </div>
-                <div className="col-start-3 col-end-13">
-                    <input name="designation_name" type="text" placeholder="Designation Name" onChange={handleChange} />
-                </div>
+        <div className= "px-5 pt-5 text-blue-900 justify-center w-screen items-center">
+            <div>
+                <label className= "px-5 text-2xl font-bold text-blue-900">
+                Create New Designation
+                </label>
+            </div>
 
-                <div className="text-right col-start-1 col-end-3">
-                    <label className="text-color-black text-right self-center">Department ID</label>
-                </div>
-                <div className="col-start-3 col-end-13">
-                    <select name="department_id" value={formData.department_id} onChange={handleChange}>
-                        <option value="">Select Department</option>
-                        {departments.map((departments: any) => (
-                            <option key={departments.department_id} value={departments.id}>
-                                {departments.dept_name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+            <div className= "pt-5 ">
+                <form onSubmit={handleSubmit} className="mt-5 text-blue-900 px-5 grid grid-cols-7 gap-2 items-center">
+                    <div className="text-right col-start-1 col-end-3">
+                        <label className="text-color-blue-800 text-right self-center">Designation Name</label>
+                    </div>
+                    <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2">
+                        <input name="designation_name" type="text" placeholder="Enter Designation Name" onChange={handleChange} 
+                        className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
+                    </div>
 
-                <div className="text-right col-start-1 col-end-3">
-                    <label className="text-color-black text-right self-center">Status</label>
-                </div>
-                <div className="col-start-3 col-end-13">
-                    <select name="status" value={formData.status} onChange={handleChange}>
-                        <option value="">Select Status</option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-                </div>
+                    <div className="text-right col-start-1 col-end-3">
+                        <label className="text-color-black text-right self-center">Department ID</label>
+                    </div>
+                    <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2 text-blue-800">
+                        <select name="department_id" value={formData.department_id} onChange={handleChange}
+                            className={`w-full focus:outline-none focus:border-none ${
+                                formData.department_id ? 'text-blue-800' : 'text-gray-400'
+                            }`}>
+                            <option value="" disabled hidden>Select Department</option>
+                            {departments.map((departments: any) => (
+                                <option key={departments.department_id} value={departments.id} className="text-blue-800">
+                                    {departments.dept_name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
 
-                <div className="col-start-3 col-end-6">
-                <Button type="submit" text="Add"/>
-                </div>
-            </form>
+                    <div className="text-right col-start-1 col-end-3">
+                        <label className="text-color-black text-right self-center">Status</label>
+                    </div>
+                    <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2 text-blue-800">
+                        <select name="status" value={formData.status} onChange={handleChange}
+                            className={`w-full focus:outline-none focus:border-none ${
+                                formData.status ? 'text-blue-800' : 'text-gray-400'
+                            }`}>
+                            <option value="" disabled hidden>Select Status</option>
+                            <option value="Active"   className="text-blue-800">Active</option>
+                            <option value="Inactive" className="text-blue-800">Inactive</option>
+                        </select>
+                    </div>
+
+                    <div className="col-start-5 col-end-7">
+                    <Button type="submit" text="Add"/>
+                    </div>
+                </form>
+            </div>
         </div>
       );
 }

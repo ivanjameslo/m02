@@ -6,33 +6,30 @@ import { NextResponse } from "next/server";
 // Working but with different function 
 // Last Prio
 export async function GET(request: NextRequest){
-    const assign_designation = await prisma.assign_designation.findMany()
-    console.log(assign_designation);
-    return NextResponse.json(assign_designation)
+    const addnlEarnings = await prisma.addnlEarnings.findMany()
+    console.log(addnlEarnings);
+    return NextResponse.json(addnlEarnings)
 }
 
 export async function POST(request: NextRequest){
     try{
         const res = await request.json();
-        const { emp_num, designation_id, employee_type, basicPay, status } = res;
-        const created = await prisma.assign_designation.create({
+        const { emp_num, typeOfEarnings, amount, date } = res;
+        const created = await prisma.addnlEarnings.create({
             data: {
                 employees: {
                     connect: { emp_num: parseInt(emp_num) }
                 },
-                designation: {
-                    connect: { id: parseInt(designation_id) }
-                },
-                employee_type,
-                basicPay,
-                status
+                typeOfEarnings,
+                amount: Number(amount),
+                date
             }
         });
 
         // console.log(created);
         return NextResponse.json(created, {status: 201})
     } catch (error) {
-        console.log("Error creating assign designation", error);
+        console.log("Error creating addnlEarnings", error);
         return NextResponse.json(error, {status: 500});
     }
     

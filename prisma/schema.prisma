@@ -28,6 +28,10 @@ model employees {
   leaves leaves[]
   signatoriesEmployee signatories[] @relation("signatoriesEmployees")
   signatoriesSuperior signatories[] @relation("signatoriesSuperior")
+  addnlEarnings addnlEarnings[]
+  deductions deductions[]
+  govtContributions govtContributions[] 
+  payroll payroll[]
 }
 
 model assign_designation {
@@ -37,6 +41,7 @@ model assign_designation {
   designation designation @relation(fields: [designation_id], references: [id])
   designation_id Int
   employee_type String
+  basicPay Float
   status String
 }
 
@@ -73,4 +78,47 @@ model signatories {
   employees employees @relation(name: "signatoriesEmployees", fields: [emp_num], references: [emp_num])
   superior employees @relation(name: "signatoriesSuperior", fields: [highersuperior], references: [emp_num])
   status String
+}
+
+model addnlEarnings {
+  id Int @id @default(autoincrement())
+  emp_num Int
+  typeOfEarnings String
+  amount Float
+  date DateTime
+  employees employees @relation(fields: [emp_num], references: [emp_num])
+}
+
+model deductions {
+  id Int @id @default(autoincrement())
+  emp_num Int
+  typeOfDeductions String
+  amount Float
+  date DateTime
+  employees employees @relation(fields: [emp_num], references: [emp_num])
+}
+
+model govtContributions {
+  id Int @id @default(autoincrement())
+  emp_num Int
+  basicPay Float
+  sss_amount Float
+  pagibig_amount Float
+  philhealth_amount Float
+  tin_amount Float
+  date DateTime
+  employees employees @relation(fields: [emp_num], references: [emp_num])
+}
+
+model payroll {
+  id String @id @unique
+  emp_num Int
+  payday DateTime
+  start_of_cutoff DateTime
+  end_of_cutoff DateTime
+  //total_earnings Float
+  //total_deductions Float
+  //total_govt_contributions Float
+  //net_pay Float
+  employees employees @relation(fields: [emp_num], references: [emp_num])
 }

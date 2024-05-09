@@ -1,0 +1,3 @@
+Database migration: prisma migrate dev --name init (change init into a new name)
+Open Prisma: npx prisma studio
+Run the file: npm run dev

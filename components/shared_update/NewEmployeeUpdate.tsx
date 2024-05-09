@@ -5,6 +5,7 @@ import Form from "@/components/ui/Form"
 import Input from "@/components/ui/Input"
 import Button from "@/components/ui/Button"
 import { useState } from "react"
+import { CustomModal } from "../ui/customModal"
 // import {BiEdit} from 'react-icons/bi'
 
 
@@ -37,10 +38,13 @@ const newEmployeeUpdate = (employees: any) => {
   return (
     <div className="flex flex-col gap-5 items-center">
         <Button onClick={handleEdit} text="Update" actionButton />
-
-        {newEmployeeUpdate ? (
-          <div className="flex flex-col">
-            <Form action={updateEmployee} onSubmit={handleSubmit}>
+        <CustomModal
+          isOpen={newEmployeeUpdate}
+          onCancel={()=>{setNewEmployeeUpdate(false)}}
+          title="Add Employee"
+          children={
+            <div className="flex flex-col">
+              <Form action={updateEmployee} onSubmit={handleSubmit}>
                 <div className="">
                   <Input name="emp_num" value={employees.id} type="hidden" />
                   <Input name="firstName" value={employees.id} type="hidden" />
@@ -52,7 +56,7 @@ const newEmployeeUpdate = (employees: any) => {
                   <Input name="country" value={employees.id} type="hidden" />
                   <Input name="zip_code" value={employees.id} type="hidden" />
                 </div>
-                <div className=" justify-center">
+                <div className="justify-center">
                   <Input name="new_emp_num" type="Int" placeholder="New Employee Number" value={formData.new_emp_num} onChange={handleChange} />
                   <Input name="new_firstName" type="text" placeholder="New First Name" value={formData.new_firstName} onChange={handleChange} />
                   <Input name="new_middleName" type="text" placeholder="New Middle Name" value={formData.new_middleName} onChange={handleChange} />
@@ -64,10 +68,10 @@ const newEmployeeUpdate = (employees: any) => {
                   <Input name="new_zip_code" type="Int" placeholder="New Zip Code" value={formData.new_zip_code} onChange={handleChange} />
                   <Button type="submit" text="Save" />
                 </div>
-            </Form>
-            </div>
-            ) : (null
-        )}
+              </Form>
+              </div>}
+        />
+        {}
     </div>
   )
 }

@@ -22,6 +22,21 @@ async function getDesignationData(){
     return designationData;
 }
 
+//not yet implemented
+const fetchDepartments = async (data: any) => {
+    const response = await fetch('/api/departments', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const responseData = await response.json();
+    const department_name = responseData.map((departments: { department_name: any; }) => departments.department_name);
+    fetchDepartments(responseData);
+};
+//-----------------------------------------------------------------------------------------------
+
 const designationTable = async () => {
     const designationData = await getDesignationData()
     return (
