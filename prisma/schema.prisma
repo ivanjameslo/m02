@@ -116,9 +116,12 @@ model payroll {
   payday DateTime
   start_of_cutoff DateTime
   end_of_cutoff DateTime
-  //total_earnings Float
-  //total_deductions Float
-  //total_govt_contributions Float
+  addnlEarnings Float
+  deductions Float
+  sss Float
+  pagibig Float
+  philhealth Float
+  tax Float
   //net_pay Float
   employees employees @relation(fields: [emp_num], references: [emp_num])
 }
