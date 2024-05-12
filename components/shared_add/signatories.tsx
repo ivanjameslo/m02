@@ -127,7 +127,10 @@ const signatories = () => {
                 <div className="col-start-5 col-end-7"></div>
 
                 <div className="col-start-5 col-end-7">
-                    <Button type="submit" text="Add"/>
+                    <div className="grid grid-cols-5">
+                        <div className="col-start-2 col-end-6">
+                            <Button type="submit" text="Add"/>
+                    </div></div>
                 </div>
             </form>
         </div>

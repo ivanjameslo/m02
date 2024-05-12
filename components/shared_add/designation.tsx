@@ -84,7 +84,7 @@ const designation = () => {
                     <div className="text-right col-start-1 col-end-3">
                         <label className="text-color-blue-800 text-right self-center">Designation Name</label>
                     </div>
-                    <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2">
+                    <div className="col-start-3 col-end-6 border border-blue-300 rounded-md px-4 py-2">
                         <input name="designation_name" type="text" placeholder="Enter Designation Name" onChange={handleChange} 
                         className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
                     </div>
@@ -92,7 +92,7 @@ const designation = () => {
                     <div className="text-right col-start-1 col-end-3">
                         <label className="text-color-black text-right self-center">Department ID</label>
                     </div>
-                    <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2 text-blue-800">
+                    <div className="col-start-3 col-end-6 border border-blue-300 rounded-md px-4 py-2 text-blue-800">
                         <select name="department_id" value={formData.department_id} onChange={handleChange}
                             className={`w-full focus:outline-none focus:border-none ${
                                 formData.department_id ? 'text-blue-800' : 'text-gray-400'
@@ -120,8 +120,15 @@ const designation = () => {
                         </select>
                     </div>
 
+                    <div className="col-start-1 col-end-7">
+                        <p><br /></p>
+                    </div>
+
                     <div className="col-start-5 col-end-7">
-                    <Button type="submit" text="Add"/>
+                        <div className="grid grid-cols-5">
+                            <div className="col-start-2 col-end-6">
+                                <Button type="submit" text="Add"/>
+                        </div></div>
                     </div>
                 </form>
             </div>

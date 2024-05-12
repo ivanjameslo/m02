@@ -31,7 +31,7 @@ model employees {
   addnlEarnings addnlEarnings[]
   deductions deductions[]
   govtContributions govtContributions[] 
-  payroll payroll[]
+  // payroll payroll[]
 }
 
 model assign_designation {
@@ -101,7 +101,11 @@ model deductions {
 model govtContributions {
   id Int @id @default(autoincrement())
   emp_num Int
-  basicPay Float
+  // basicPay Float
+  sss_number String
+  pagibig_number String
+  philhealth_number String
+  tin_number String
   sss_amount Float
   pagibig_amount Float
   philhealth_amount Float
@@ -111,17 +115,18 @@ model govtContributions {
 }
 
 model payroll {
-  id String @id @unique
-  emp_num Int
+  id Int  @id @default(autoincrement())
+  // emp_num Int
   payday DateTime
   start_of_cutoff DateTime
   end_of_cutoff DateTime
-  addnlEarnings Float
-  deductions Float
-  sss Float
-  pagibig Float
-  philhealth Float
-  tax Float
+  basicPay Float?
+  addnlEarnings Float?
+  deductions Float?
+  sss Float?
+  pagibig Float?
+  philhealth Float?
+  tax Float?
   //net_pay Float
-  employees employees @relation(fields: [emp_num], references: [emp_num])
+  // employees employees @relation(fields: [emp_num], references: [emp_num])
 }

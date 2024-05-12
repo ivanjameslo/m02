@@ -123,7 +123,7 @@ const addnlEarning = () => {
                     className={`w-full focus:outline-none focus:border-none ${
                         formData.typeOfDeductions ? 'text-blue-800' : 'text-gray-400'
                     }`}>
-                        <option value="" disabled hidden>Select Earnings</option>
+                        <option value="" disabled hidden>Select Deduction</option>
                         <option value="Loan" className="text-blue-800">Loan</option>
                         <option value="Union Dues" className="text-blue-800">Union Dues</option>
                         <option value="Insurance" className="text-blue-800">Insurance</option>
