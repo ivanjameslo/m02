@@ -24,6 +24,7 @@ model employees {
   province String
   country String
   zip_code Int
+  basicPay Float
   assignment assign_designation[]
   leaves leaves[]
   signatoriesEmployee signatories[] @relation("signatoriesEmployees")
@@ -31,7 +32,7 @@ model employees {
   addnlEarnings addnlEarnings[]
   deductions deductions[]
   govtContributions govtContributions[] 
-  // payroll payroll[]
+  payroll payroll[]
 }
 
 model assign_designation {
@@ -41,7 +42,6 @@ model assign_designation {
   designation designation @relation(fields: [designation_id], references: [id])
   designation_id Int
   employee_type String
-  basicPay Float
   status String
 }
 
@@ -101,7 +101,6 @@ model deductions {
 model govtContributions {
   id Int @id @default(autoincrement())
   emp_num Int
-  // basicPay Float
   sss_number String
   pagibig_number String
   philhealth_number String
@@ -116,17 +115,9 @@ model govtContributions {
 
 model payroll {
   id Int  @id @default(autoincrement())
-  // emp_num Int
+  emp_num Int
   payday DateTime
   start_of_cutoff DateTime
   end_of_cutoff DateTime
-  basicPay Float?
-  addnlEarnings Float?
-  deductions Float?
-  sss Float?
-  pagibig Float?
-  philhealth Float?
-  tax Float?
-  //net_pay Float
-  // employees employees @relation(fields: [emp_num], references: [emp_num])
+  employees employees @relation(fields: [emp_num], references: [emp_num])
 }

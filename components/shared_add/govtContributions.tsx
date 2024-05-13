@@ -60,10 +60,10 @@ const GovtContributions = () => {
         },
         body: JSON.stringify({
           emp_num: Number(emp_num),
-          sss_number: Number(sss_number),
-          pagibig_number: Number(pagibig_number),
-          philhealth_number: Number(philhealth_number),
-          tin_number: Number(tin_number),
+          sss_number: sss_number,
+          pagibig_number: pagibig_number,
+          philhealth_number: philhealth_number,
+          tin_number: tin_number,
           date
         })
       });
@@ -160,7 +160,7 @@ const GovtContributions = () => {
           </div>
           
                 <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2">
-                        <input name="sss_number" type="int" placeholder="Enter SSS Number" value={sss_number} onChange={e => setSSS(e.target.value)} 
+                        <input name="sss_number" type="text" placeholder="Enter SSS Number" value={sss_number} onChange={e => setSSS(e.target.value)} 
                         className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
                 </div>
 
@@ -169,7 +169,7 @@ const GovtContributions = () => {
           </div>
 
                 <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2">
-                    <input name="pagibig_number" type="int" placeholder="Enter Pagibig Number" value={pagibig_number} onChange={e => setPagibig(e.target.value)} 
+                    <input name="pagibig_number" type="text" placeholder="Enter Pagibig Number" value={pagibig_number} onChange={e => setPagibig(e.target.value)} 
                     className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
                 </div>
 
@@ -178,7 +178,7 @@ const GovtContributions = () => {
           </div>
 
                 <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2">
-                    <input name="philhealth_number" type="int" placeholder="Enter PhilHealth Number" value={philhealth_number} onChange={e => setPhilhealth(e.target.value)} 
+                    <input name="philhealth_number" type="text" placeholder="Enter PhilHealth Number" value={philhealth_number} onChange={e => setPhilhealth(e.target.value)} 
                     className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
                 </div>
 
@@ -187,7 +187,7 @@ const GovtContributions = () => {
           </div>
 
                 <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2">
-                    <input name="tin_number" type="int" placeholder="Enter Tin Number" value={tin_number} onChange={e => setTin(e.target.value)} 
+                    <input name="tin_number" type="text" placeholder="Enter Tin Number" value={tin_number} onChange={e => setTin(e.target.value)} 
                     className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
                 </div>
 

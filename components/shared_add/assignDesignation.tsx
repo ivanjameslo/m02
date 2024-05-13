@@ -16,7 +16,6 @@ const assignDesignation = () => {
         emp_num: "",
         designation_id: "",
         employee_type: "",
-        basicPay: "",
         status: "",
     });
 
@@ -37,7 +36,6 @@ const assignDesignation = () => {
                     emp_num: formData.emp_num,
                     designation_id: formData.designation_id,
                     employee_type: formData.employee_type,
-                    basicPay: Number(formData.basicPay),
                     status: formData.status,
                 })
             });
@@ -49,7 +47,6 @@ const assignDesignation = () => {
             emp_num: "",
             designation_id: "",
             employee_type: "",
-            basicPay: "",
             status: "",
         });
     };
@@ -157,14 +154,6 @@ const assignDesignation = () => {
                             <option value="Contractual" className="text-blue-800">Contractual</option>
                     </select>
                 </div>
-
-                <div className="text-right col-start-1 col-end-3">
-                    <label className="text-color-black text-right self-center">Basic Pay</label>
-                </div>
-                <div className="col-start-3 col-end-7 border border-blue-300 rounded-md px-4 py-2 text-blue-800">
-                    <input name="basicPay" type="Float" placeholder="Amount" onChange={handleChange} className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
-                </div>
-
 
                 <div className="text-right col-start-1 col-end-3">
                     <label className="text-color-blue-800 text-right self-center">Status</label>

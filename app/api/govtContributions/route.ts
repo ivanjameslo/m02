@@ -17,7 +17,7 @@ export async function POST(request: NextRequest){
         const { emp_num, sss_number, pagibig_number, philhealth_number, tin_number, date} = res;
 
         // Fetch the basicPay for the given emp_num
-        const employee = await prisma.assign_designation.findUnique({
+        const employee = await prisma.employees.findUnique({
             where: { emp_num: parseInt(emp_num) },
             select: { basicPay: true }
         });

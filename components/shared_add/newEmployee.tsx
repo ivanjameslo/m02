@@ -24,6 +24,7 @@ const NewEmployee = () => {
     province: "",
     country: "",
     zip_code: "",
+    basicPay: "",
   });
   
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +49,7 @@ const NewEmployee = () => {
           province: formData.province,
           country: formData.country,
           zip_code: Number(formData.zip_code),
+          basicPay: Number(formData.basicPay),
         })
       });
       
@@ -67,6 +69,7 @@ const NewEmployee = () => {
       province: "",
       country: "",
       zip_code: "",
+      basicPay: "",
     });
 
     router.refresh();
@@ -124,6 +127,14 @@ const NewEmployee = () => {
                 </div>
                 <div className="col-start-10 col-end-12 border border-blue-300 rounded-md px-4 py-2 text-blue-800">
                   <input name="zip_code" type="Int" placeholder="Zip Code" onChange={handleChange} className="w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
+                </div>
+
+          <div className="text-right col-start-1 col-end-3">
+            <label className="text-color-black text-right self-center">Basic Pay</label>
+          </div>
+
+                <div className="col-start-3 col-end-12 border border-blue-300 rounded-md px-4 py-2 text-blue-800">
+                  <input name="basicPay" type="float" placeholder="Basic Pay Amount" onChange={handleChange} className=" text-blue-800 w-full focus:outline-none focus:border-none placeholder-blueGray-400"/>
                 </div>
 
           <div className="col-start-9 col-end-12 justify-end flex-auto">

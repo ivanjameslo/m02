@@ -54,7 +54,7 @@ const Navbar = () => {
           <a href="#" className="hover:text-blue-400">EMPLOYEE</a>
           {showEmployeeDropdown && (
             <ul>
-              <li><a href="/new-employee" className="hover:text-blue-400">Employee</a></li>
+              <li><a href="/employee" className="hover:text-blue-400">Employee</a></li>
               <li><a href="/signatories" className="hover:text-blue-400">Signatories</a></li>
               <li><a href="/assign-designation" className="hover:text-blue-400">Assign Designation</a></li>
             </ul>

@@ -3,8 +3,6 @@
 import { PrismaClient } from '@prisma/client';
 import NewEmployeeUpdate from '../shared_update/NewEmployeeUpdate';
 import NewEmployeeDelete from '../shared_delete/newEmployeeDelete';
-import { deleteEmployee } from '@/app/actions/todoActions';
-import Button from '@/components/ui/Button';
 
 
 
