@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import ReactDateTimeClass from 'react-datetime';
 import { Moment } from 'moment';
+import Link from 'next/link';
 
 const Payroll = () => {
 
@@ -102,7 +103,7 @@ const Payroll = () => {
                         <label className="text-color-black text-left self-center">Payroll End Payroll</label>
                     </div>
 
-                        <div className="text-center col-start-1 col-end-3 border border-blue-300 rounded-md px-4 py-2">
+                        <div className="text-center col-start-1 col-end-3 border border-blue-300 rounded-md px-4 py-2 flex justify-center">
                             <ReactDateTimeClass
                                     dateFormat="YYYY-MM-DD"
                                     timeFormat="HH:mm:ss.SSS"
@@ -110,7 +111,7 @@ const Payroll = () => {
                             />
                         </div>
 
-                        <div className="text-center col-start-4 col-end-6 border border-blue-300 rounded-md px-4 py-2">
+                        <div className="text-center col-start-4 col-end-6 border border-blue-300 rounded-md px-4 py-2 flex justify-center">
                             <ReactDateTimeClass
                                     dateFormat="YYYY-MM-DD"
                                     timeFormat="HH:mm:ss.SSS"
@@ -118,7 +119,7 @@ const Payroll = () => {
                             />
                         </div>
 
-                        <div className="text-center col-start-7 col-end-9 border border-blue-300 rounded-md px-4 py-2">
+                        <div className="text-center col-start-7 col-end-9 border border-blue-300 rounded-md px-4 py-2 flex justify-center">
                             <ReactDateTimeClass
                                     dateFormat="YYYY-MM-DD"
                                     timeFormat="HH:mm:ss.SSS"
@@ -127,7 +128,12 @@ const Payroll = () => {
                         </div>
 
                         <div className="col-start-9 col-end-12 justify-end flex-auto">
-                            <Button type="submit" text="Generate Payroll"/>
+                                <Button type="submit" text="Generate Payroll"/>
+
+                                <br />
+                            <ul className="mt-10 bg-blue-200 hover:bg-blue-300 text-blue-900 w-30 px-4 rounded">
+                                <li><a href="/payrollTable" className="hover:text-blue-400">View Payroll</a></li>
+                            </ul>
                         </div>
                 </form>
             </div>

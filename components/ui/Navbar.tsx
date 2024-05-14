@@ -95,7 +95,6 @@ const Navbar = () => {
               <li><a href="/govtContributions" className="hover:text-blue-400">Government Contributions</a></li>
               <li><a href="/deductions" className="hover:text-blue-400">Deductions</a></li>
               <li><a href="/payroll" className="hover:text-blue-400">Payroll</a></li>
-              <li><a href="/payslip" className="hover:text-blue-400">Payslip</a></li>
               {/* Add other items for Payroll here */}
             </ul>
           )}
