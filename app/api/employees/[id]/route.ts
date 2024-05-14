@@ -27,18 +27,6 @@ export async function GET(request: Request, { params } : { params: {id: string}}
             govtContributions: true,
             payroll: true
             }
-            // employees: {
-            //     include: {
-            //         assignment: {
-            //             include: {
-            //                 designation: true
-            //             }
-            //         },
-            //         addnlEarnings: true,
-            //         deductions: true,
-            //         govtContributions: true
-            //     }
-            // }
     });
     return NextResponse.json(payslip);
 }

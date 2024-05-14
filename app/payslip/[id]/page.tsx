@@ -2,14 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 
-// interface PayslipData {
-//     id: number,
-//     employee: Employee,
-//     payday: Date,
-//     start_of_cutoff: Date,
-//     end_of_cutoff: Date,
-// }
-
 interface Employee {
     emp_num: number;
     firstName: string;
@@ -85,6 +77,7 @@ const Payslip = ({ params }: { params: { id: string } }) => {
     }, []);
 
     return (
+        
         <div>
             <div>
                 <label>Payslip</label>
@@ -248,7 +241,7 @@ const Payslip = ({ params }: { params: { id: string } }) => {
                                     </table>
                                 </div>
                             </div>
-
+                            
                         </div>
                     </div>
                 ))}                
