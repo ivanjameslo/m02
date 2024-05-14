@@ -9,41 +9,44 @@ import { CustomModal } from "../ui/customModal"
 import { PrismaClient } from '@prisma/client';
 import Link from 'next/link';
 
-interface EmployeeData {
-    map(arg0: (employee: any) => React.JSX.Element): React.ReactNode;
-    id: number;
-    emp_num: number;
-    firstName: string;
-    lastName: string;
-    assignment: {
-        designation_id: number;
-        basicPay: number;
-    },
-    addnlEarnings: AddnlEarningsData[];
-    deductions: DeductionsData[];
-    govtContributions: GovtContributionsData[];
+interface PayslipData {
+    emp_num: number,
+    firstName: string,
+    lastName: string,
+    basicPay: number,
+    assignment: AssignDesignation[],
+    addnlEarnings: AddnlEarnings[];
+    deductions: Deductions[];
+    govtContributions: GovtContributions[];
 }
 
-interface DesignationData{
-    designation_name: string;
-}
-
-interface AssignmentData {
-    basicPay: number;
+type AssignDesignation = {
     designation_id: number;
+    employee_type: string;
+    designation: Designation;
 }
 
-interface AddnlEarningsData {
-    typeOfEarnings: string;
+type Designation = {
+    designation_name: string;
+    department_id: number;
+    department: Department;
+}
+
+type Department = {
+    department_name: string;
+}
+
+type AddnlEarnings = {
+    typeOfEarnings: string,
     amount: number;
 }
 
-interface DeductionsData {
-    typeOfDeductions: string;
+type Deductions = {
+    typeOfDeductions: string,
     amount: number;
 }
 
-interface GovtContributionsData {
+type GovtContributions = {
     sss_number: string;
     pagibig_number: string;
     philhealth_number: string;
@@ -54,87 +57,19 @@ interface GovtContributionsData {
     tin_amount: number;
 }
 
+type Payroll = {
+    payday: Date;
+    start_of_cutoff: Date;
+    end_of_cutoff: Date;
+}
+
 const Payslip = () => {
     
-    // const [employeeData, setEmployeeData] = useState<EmployeeData | null>(null);
-    // const getEmployeeData = async (employeeId: number) => {
-    //     try {
-    //       const response = await fetch(`/api/employee?id=${employeeId}`);
-    //       if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //       }
-    //       const data = await response.json();
-    //       return data;
-    //     } catch (error) {
-    //       console.error('Error fetching employee data:', error);
-    //     }
-    //   };
-
-    const [employeeData, setEmployeeData] = useState<EmployeeData[]>([]);
-    const fetchEmployeeData = async () => {
-        const response = await fetch('/api/payslip', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        if (!response.ok){
-            throw new Error('Something went wrong');
-        }
-        const data = await response.json();
-        console.log(data)
+    const [payslipDetails, setPayslipDetails] = useState<PayslipData[]>([]);
+    const fetchPayslipData = async () => {
+        
     }
-
-    useEffect(() => {
-        fetchEmployeeData().catch(error => console.log(error));
-    }, []);
-
-    // useEffect(() => {
-    //     getEmployeeData(1) // Replace '1' with the actual employee ID
-    //     .then(data => setEmployeeData(data))
-    //     .catch(error => console.error(error));
-    // }, []);
     
-    return (
-        <div>
-
-            <div>
-                <label>Employee Masterlist</label>
-            </div>
-
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Employee ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Designation</th>
-                            <th>View Payslip</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {employeeData.map((employeeData) => (
-                        <tr key={employeeData.emp_num}>
-                            <td>{employeeData.emp_num}</td>
-                            <td>{employeeData.firstName}</td>
-                            <td>{employeeData.lastName}</td>
-                            {/* <td>{employeeData.designation_name}</td> */}
-                            <td>
-                            <Link href={`/payslip/${employeeData.id}`}>
-                                <a>View Payslip</a>
-                            </Link>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </div>
-
-
-        </div>
-    )
-
 }
 export default Payslip
 // interface EmployeeData {

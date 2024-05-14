@@ -9,6 +9,7 @@ export async function GET(request: NextRequest){
             addnlEarnings: true,
             deductions: true,
             govtContributions: true,
+            payroll: true
         }
     })
     
@@ -23,26 +24,14 @@ export async function POST(request: Request) {
     const employees = await prisma.employees.findMany();
 
     // Create a payroll record for each employee
-    const created = await Promise.all(employees.map(employee => 
-        prisma.payroll.create({
+    const created = await Promise.all(employees.map(employee => {
+        return prisma.payroll.create({
             data: {
                 ...json,
-                emp_num: employee.emp_num, // Assuming 'employeeId' is the correct field name
+                emp_num: employee.emp_num,
             },
-        })
-    ));
+        });
+    }));
 
     return new NextResponse(JSON.stringify(created), { status: 201 });
-}
-
-export async function emmanGET(request: Request) {
-    const payroll = await prisma.employees.findMany({
-        include: {
-            assignment: true,
-            addnlEarnings: true,
-            deductions: true,
-            govtContributions: true,
-        }
-    });
-    return NextResponse.json(payroll);
 }

@@ -25,14 +25,14 @@ model employees {
   country String
   zip_code Int
   basicPay Float
-  assignment assign_designation[]
+  assignment assign_designation?
   leaves leaves[]
   signatoriesEmployee signatories[] @relation("signatoriesEmployees")
   signatoriesSuperior signatories[] @relation("signatoriesSuperior")
   addnlEarnings addnlEarnings[]
   deductions deductions[]
-  govtContributions govtContributions[] 
-  payroll payroll[]
+  govtContributions govtContributions? 
+  payroll payroll?
 }
 
 model assign_designation {
@@ -49,14 +49,14 @@ model departments {
   id Int @id @default(autoincrement())
   dept_name String
   status String 
-  designation designation[]
+  designation designation?
 }
 
 model designation {
   id Int @id @default(autoincrement())
   designation_name String
   departments departments @relation(fields: [department_id], references: [id])
-  department_id Int
+  department_id Int @unique
   status String
   assign_designation assign_designation[]
 }
@@ -100,7 +100,7 @@ model deductions {
 
 model govtContributions {
   id Int @id @default(autoincrement())
-  emp_num Int
+  emp_num Int @unique
   sss_number String
   pagibig_number String
   philhealth_number String
@@ -115,7 +115,7 @@ model govtContributions {
 
 model payroll {
   id Int  @id @default(autoincrement())
-  emp_num Int
+  emp_num Int @unique
   payday DateTime
   start_of_cutoff DateTime
   end_of_cutoff DateTime

@@ -5,7 +5,6 @@ import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import ReactDateTimeClass from 'react-datetime';
 import { Moment } from 'moment';
-import { CustomModal } from "../ui/customModal"
 
 const Payroll = () => {
 
@@ -15,13 +14,8 @@ const Payroll = () => {
         payday: "",
         start_of_cutoff: "",
         end_of_cutoff: "",
-        // emp_num: "",
     })
     
-    // const [payday, setPayday] = useState("");
-    // const [start_of_cutoff, setStartOfCutOff] = useState("");
-    // const [end_of_cutoff, setEndOfCutOff] = useState("");
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement | HTMLSelectElement>) => {
         e.preventDefault();
         try {
@@ -43,32 +37,6 @@ const Payroll = () => {
             console.error('Error creating payroll:', error);
         }
     };
-
-    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement | HTMLSelectElement>) => {
-    //     e.preventDefault();
-    //     try{
-    //       await fetch('/api/payroll',{
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },
-    //         // body: JSON.stringify({
-    //         //     payday: formData.payday,
-    //         //     start_of_cutoff: formData.start_of_cutoff,
-    //         //     end_of_cutoff: formData.end_of_cutoff,
-    //         // })
-    //         body: JSON.stringify(formData),
-    //       });
-          
-    //       // router.replace(router.asPath);
-    //       router.refresh();
-    //     }catch(error){
-    //       console.log(error)
-    //     }
-    //     router.refresh();
-    //   }
-
-    //DATE payday
     
     const handleDateChange = (date: string | Moment, name: string) => {
         let dateString: string;
@@ -111,41 +79,6 @@ const Payroll = () => {
         fetchEmployees().catch(error => console.log(error));
     }, []);
 
-
-    // const [showDetails, setShowDetails] = useState(false)
-
-    // const [tableData, setTableData] = useState([]);
-
-//     useEffect(() => {
-//     const fetchData = async () => {
-//         try {
-//             const response = await fetch('/api/payroll', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//             });
-
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-
-//             const data = await response.json();
-//             console.log(data); // Log the response data to the console for debugging
-
-//             if (Array.isArray(data.tableData)) {
-//                 setTableData(data.tableData);
-//             } else {
-//                 console.error('tableData is not an array');
-//             }
-//         } catch (error) {
-//             console.error('Failed to fetch data:', error);
-//         }
-//     };
-
-//     fetchData();
-// }, []);
-
     return (
         <div>
             <div className="px-5 mt-5">
@@ -154,14 +87,22 @@ const Payroll = () => {
                 </label>
             </div>
 
-            <div className= "pt-5  text-blue-900">
-                <form onSubmit={handleSubmit} className="container mx-auto grid grid-cols-12 gap-2 items-center">
+            <div className= "pt-5 text-blue-900">
+                <form onSubmit={handleSubmit} className="container mx-auto grid grid-cols-9 gap-2 items-center">
                     
                     <div className="text-right col-start-1 col-end-3">
-                        <label className="text-color-black text-right self-center">Payday</label>
+                        <label className="text-color-black text-left self-center">Payday</label>
                     </div>
 
-                        <div className="text-left col-start-3 col-end-5 border border-blue-300 rounded-md px-4 py-2">
+                    <div className="text-right col-start-4 col-end-6">
+                        <label className="text-color-black text-left self-center">Payroll Start Period</label>
+                    </div>
+                    
+                    <div className="text-right col-start-7 col-end-9">
+                        <label className="text-color-black text-left self-center">Payroll End Payroll</label>
+                    </div>
+
+                        <div className="text-center col-start-1 col-end-3 border border-blue-300 rounded-md px-4 py-2">
                             <ReactDateTimeClass
                                     dateFormat="YYYY-MM-DD"
                                     timeFormat="HH:mm:ss.SSS"
@@ -169,11 +110,7 @@ const Payroll = () => {
                             />
                         </div>
 
-                    <div className="text-right col-start-1 col-end-3">
-                        <label className="text-color-black text-right self-center">Start Cutoff Date</label>
-                    </div>
-
-                        <div className="text-left col-start-3 col-end-5 border border-blue-300 rounded-md px-4 py-2">
+                        <div className="text-center col-start-4 col-end-6 border border-blue-300 rounded-md px-4 py-2">
                             <ReactDateTimeClass
                                     dateFormat="YYYY-MM-DD"
                                     timeFormat="HH:mm:ss.SSS"
@@ -181,11 +118,7 @@ const Payroll = () => {
                             />
                         </div>
 
-                    <div className="text-right col-start-1 col-end-3">
-                        <label className="text-color-black text-right self-center">End Cutoff Date</label>
-                    </div>
-
-                        <div className="text-left col-start-3 col-end-5 border border-blue-300 rounded-md px-4 py-2">
+                        <div className="text-center col-start-7 col-end-9 border border-blue-300 rounded-md px-4 py-2">
                             <ReactDateTimeClass
                                     dateFormat="YYYY-MM-DD"
                                     timeFormat="HH:mm:ss.SSS"
@@ -193,47 +126,10 @@ const Payroll = () => {
                             />
                         </div>
 
-                    <div className="col-start-9 col-end-12 justify-end flex-auto">
-                        <Button type="submit" text="Generate Payroll"/>
-                        {/* <Button onClick={() => setShowDetails(!showDetails)} text="Show Details"/> */}
-                    </div>
+                        <div className="col-start-9 col-end-12 justify-end flex-auto">
+                            <Button type="submit" text="Generate Payroll"/>
+                        </div>
                 </form>
-                {/* {showDetails && (
-                    <CustomModal isOpen={showDetails} 
-                    onCancel={() => setShowDetails(false)} 
-                    title={'Payroll Details'}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Employee</th>
-                                    <th>Basic Pay</th>
-                                    <th>Total Additional Earnings</th>
-                                    <th>Total Deductions</th>
-                                    <th>SSS</th>
-                                    <th>Pagibig</th>
-                                    <th>PhilHealth</th>
-                                    <th>Tax</th>
-                                    <th>Net Pay</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {tableData.map((employee) => (
-                                    <tr key={employee.emp_num}>
-                                        <td>{employee.emp_num}</td>
-                                        <td>{employee.basicPay}</td>
-                                        <td>{employee.totalAddnlEarnings}</td>
-                                        <td>{employee.totalDeductions}</td>
-                                        <td>{employee.sss}</td>
-                                        <td>{employee.pagibig}</td>
-                                        <td>{employee.philhealth}</td>
-                                        <td>{employee.tax}</td>
-                                        <td>{employee.basicPay + employee.totalAddnlEarnings - employee.totalDeductions - employee.sss - employee.pagibig - employee.philhealth - employee.tax}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </CustomModal>
-                )} */}
             </div>
         </div>
     );
